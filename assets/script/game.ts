@@ -49,6 +49,7 @@ export class game extends Component {
   }
   // 按比例随机生成生命
   generateLift() {
+    this.clear()
     const deNum = this.w*this.h*this.deVivalRatio/100
     let lpArr = []
     this.cellArr.map(item => {lpArr = [...lpArr, ...item]})
