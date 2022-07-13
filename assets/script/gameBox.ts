@@ -12,13 +12,9 @@ export class gameBox extends Component {
   start() {
     input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
     input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
-    console.log(123)
     input.on(Input.EventType.MOUSE_WHEEL, this.onWheel, this);
-    console.log(234)
-
   }
   onWheel(event: EventMouse) {
-    console.log(111)
     const uiTrans = this.cen.getComponent(UITransform)
     this.sf+=event.getScrollY() / 15000
     this.sf = this.sf < 960/uiTrans.width ? 960/uiTrans.width: this.sf
@@ -72,7 +68,6 @@ export class gameBox extends Component {
     let maxy = uiTrans.height*sf - 900
     let rex = x <= minX ? minX : x >= 0 ? 0 : x
     let rey = y <= 0 ? 0 : y > maxy ? maxy : y
-    console.log(rex, rey, 0)
     return new Vec3(rex, rey, 0)
   }
   update(dt: number) {
