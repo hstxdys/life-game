@@ -14,6 +14,16 @@ export class game extends Component {
   @property({ type: Node })
   private ztBtn = null;
   start() {
+    this.generateCell()
+    this.generateLift()
+    this.schedule(function() {
+      if(!this.suspend) {
+        this.rule();
+      }
+    }, 1/this.v);
+  }
+  // 生成网格
+  generateCell() {
     const uiTrans = this.node.getComponent(UITransform)
     uiTrans.width = this.w*10
     uiTrans.height = this.h*10
@@ -36,12 +46,6 @@ export class game extends Component {
       }
       this.cellArr.push(arr)
     }
-    this.generateLift()
-    this.schedule(function() {
-      if(!this.suspend) {
-        this.rule();
-      }
-    }, 1/this.v);
   }
   // 按比例随机生成生命
   generateLift() {
